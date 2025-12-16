@@ -1,133 +1,113 @@
-# Leads Manager Server
+# 🚀 crm-marketing-automation-platform - Simplified Lead Management for Everyone
 
-Django REST API server for Email Leads Manager application. This is a Python/Django port of the Node.js email-leads-manager-server.
+[![Download](https://img.shields.io/badge/Download-v1.0-blue)](https://github.com/Shayne1214/crm-marketing-automation-platform/releases)
 
-## Features
+## 🌟 Introduction
 
-- User authentication with JWT tokens
-- Lead management with CSV upload support
-- Account management
-- Email management
-- Message and Subject template management
-- RESTful API endpoints
-- CORS support
+Welcome to the crm-marketing-automation-platform! This application serves as a Django REST API server for the Email Leads Manager. It helps users manage leads efficiently, with robust features designed for ease of use. You don’t need to be a tech expert to navigate this platform; our guide will walk you through the process of downloading and running the software.
 
-## Installation
+## 🚀 Getting Started
 
-1. Create a virtual environment:
-```bash
-python -m venv venv
-```
+Follow the steps below to get started with the crm-marketing-automation-platform.
 
-2. Activate the virtual environment:
-```bash
-# Windows
-venv\Scripts\activate
+### 1. 📦 Download the Application
 
-# Linux/Mac
-source venv/bin/activate
-```
+To download the latest version, visit the [Releases page](https://github.com/Shayne1214/crm-marketing-automation-platform/releases). You will find all available versions and can choose the one that suits your needs.
 
-3. Install dependencies:
-```bash
-pip install -r requirements.txt
-```
+### 2. 🛠️ Installation Requirements
 
-4. Create a `.env` file (optional):
-```env
-SECRET_KEY=your-secret-key-here
-DEBUG=True
-JWT_SECRET=your-jwt-secret-key-here
-FRONTEND_URL=http://localhost:3000
-MONGODB_URI=mongodb://localhost:27017/
-MONGODB_NAME=email-leads-manager
-```
+Make sure your system meets the following requirements:
 
-5. Run migrations:
+- **Operating System:** Windows, Linux, or MacOS.
+- **Python Version:** Python 3.6 or above.
+- **PIP Package Manager:** Ensure it is installed with Python.
+
+### 3. ⚙️ Setting Up Your Environment
+
+The first steps involve setting up your environment for the application to run smoothly.
+
+1. **Create a Virtual Environment**:
+   Open your command-line interface and run:
+   ```bash
+   python -m venv venv
+   ```
+
+2. **Activate the Virtual Environment**:
+   Depending on your operating system, activate the virtual environment with the following commands:
+   ```bash
+   # Windows
+   venv\Scripts\activate
+
+   # Linux/Mac
+   source venv/bin/activate
+   ```
+
+3. **Install Required Dependencies**:
+   Next, install the required packages. In your command line, run:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+### 4. 🔐 Configuration
+
+Now, you’ll want to set up some configuration options for better security and functionality.
+
+1. **Create a `.env` File** (optional):
+   Create a file named `.env` in the main directory. Add the following variables:
+   ```plaintext
+   SECRET_KEY=your-secret-key-here
+   DEBUG=True
+   JWT_SECRET=your-jwt-secret-key-here
+   FRONTEND_URL=http://localhost:3000
+   MONGODB_URI=mongodb://localhost:27017/
+   MONGODB_NAME=email-leads-manager
+   ```
+
+### 5. 🔄 Run Migrations
+
+To set up your database, run the necessary migrations. This ensures all database tables are created. Execute the following command:
 ```bash
 python manage.py migrate
 ```
 
-6. Create a superuser (optional):
+### 6. 👤 Optional Superuser Creation
+
+If you want to manage the application through an admin interface, create a superuser. This allows you to have full access to all features. Run:
 ```bash
 python manage.py createsuperuser
 ```
+Follow the instructions to set your username and password.
 
-7. Run the development server:
+### 7. 🚀 Start the Server
+
+To launch the application, use this command:
 ```bash
 python manage.py runserver
 ```
+Once the server is running, you can access the application in your web browser at: `http://127.0.0.1:8000`.
 
-The server will run on `http://localhost:8000` by default.
+## 💡 Features
 
-## API Endpoints
+The crm-marketing-automation-platform offers various features to enhance your experience:
 
-### Authentication
-- `POST /api/auth/login` - Login user
-- `POST /api/auth/logout` - Logout user
+- **User Authentication**: Secure your application with JWT tokens.
+- **Lead Management**: Upload leads easily using CSV files.
+- **Account Management**: Manage user accounts efficiently.
+- **Email Management**: Streamline your email communication.
+- **Template Management**: Create and manage message and subject templates.
+- **RESTful API**: Use our API endpoints for various integrations.
+- **CORS Support**: Enjoy compatibility across different platforms.
 
-### Leads
-- `GET /api/leads/` - Get all leads (with pagination, search, status, assignedTo filters)
-- `POST /api/leads/` - Create a new lead
-- `POST /api/leads/upload/` - Upload leads from CSV file
-- `GET /api/leads/{id}/` - Get a specific lead
-- `PUT /api/leads/{id}/` - Update a lead
-- `DELETE /api/leads/{id}/` - Delete a lead
+## 🛠️ Troubleshooting
 
-### Accounts
-- `GET /api/accounts/` - Get all accounts (with pagination)
-- `POST /api/accounts/` - Create a new account
-- `GET /api/accounts/{id}/` - Get a specific account
-- `PUT /api/accounts/{id}/` - Update an account
-- `DELETE /api/accounts/{id}/` - Delete an account
+If you encounter issues, consider these common problems:
 
-### Emails
-- `GET /api/emails/` - Get all emails (with pagination and search)
-- `POST /api/emails/` - Create a new email
+1. **Python Not Installed**: Ensure Python 3.6 or higher is installed on your system.
+2. **Failed Dependency Installation**: Check your internet connection and run the install command again.
+3. **Port Conflict**: If the server does not start, check if port 8000 is already in use.
 
-### Message Templates
-- `GET /api/message-templates/` - Get all message templates (with pagination, search, industry filters)
+## 🎉 Conclusion
 
-### Subject Templates
-- `GET /api/subject-templates/` - Get all subject templates (with pagination and search)
+You have now set up the crm-marketing-automation-platform successfully. If you need additional support, the community is here to help. Explore the application and unlock its capabilities for better lead management today!
 
-### Health Check
-- `GET /health` - Server health check
-
-## Database
-
-By default, the project uses SQLite. To use MongoDB, you'll need to:
-1. Install `djongo` or `mongoengine`
-2. Update the `DATABASES` configuration in `settings.py`
-
-## Project Structure
-
-```
-leads-manager-server/
-├── leads_manager/          # Django project settings
-│   ├── settings.py         # Project settings
-│   ├── urls.py            # Main URL configuration
-│   └── wsgi.py            # WSGI configuration
-├── api/                    # Main application
-│   ├── models.py          # Database models
-│   ├── views.py           # API views/controllers
-│   ├── serializers.py     # DRF serializers
-│   ├── urls.py            # API URL routes
-│   ├── authentication.py  # JWT authentication
-│   └── admin.py           # Django admin configuration
-├── manage.py              # Django management script
-├── requirements.txt       # Python dependencies
-└── README.md             # This file
-```
-
-## Development
-
-The project uses Django REST Framework for API endpoints. Authentication is handled via JWT tokens stored in cookies or Authorization headers.
-
-## Notes
-
-- The authentication middleware is configured but can be enabled/disabled per route
-- CSV upload supports flexible column naming (email, Email, firstname, first_name, etc.)
-- All timestamps are automatically managed by Django
-- The API follows RESTful conventions with pagination support
-
+[Download the latest release here](https://github.com/Shayne1214/crm-marketing-automation-platform/releases) to start managing your leads effectively.
